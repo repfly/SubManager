@@ -22,8 +22,6 @@ jobs:
     - name: Run tests
       run: swift test -v
 
-    - name: Install SwiftLint
-      run: brew install swiftlint
     - name: Project Directory
       run: echo ${GITHUB_WORKSPACE}
 
