@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+#if os(iOS)
 
 struct LandingFooterView: View {
     @Binding var currentPage: Int
@@ -50,3 +51,4 @@ struct LandingFooterView: View {
         }
     }
 }
+#endif
