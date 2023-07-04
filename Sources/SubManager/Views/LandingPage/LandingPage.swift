@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+#if os(iOS)
 public struct LandingPage<Content: View>: View {
     private let pages: [Content]
     private let pageCount: Int
@@ -40,3 +40,4 @@ public struct LandingPage<Content: View>: View {
         .padding()
     }
 }
+#endif
