@@ -1,0 +1,28 @@
+name: Swift build checks
+
+on:
+  push:
+    branches: [ "main" , "development"]
+  pull_request:
+    branches: [ "main" , "development" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+    - name: Install SwiftLint
+      run: |
+          git clone https://github.com/realm/SwiftLint.git
+          cd SwiftLint
+          swift build --configuration release -Xswiftc -static-stdlib
+
+    - name: Run SwiftLint in strict mode
+      run: |
+          ./SwiftLint/.build/release/swiftlint lint --strict --path ${{ github.workspace }}
