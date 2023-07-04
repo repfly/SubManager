@@ -16,12 +16,13 @@ jobs:
     - name: Get swift version
       run: swift --version
 
+    - name: Change working directory to project directory
+      run: cd ${{ github.workspace }}
+
     - name: Build
-      working-direcory: ${GITHUB_WORKSPACE}
       run: swift build -v
 
     - name: Run tests
-      working-direcory: ${GITHUB_WORKSPACE}
       run: swift test -v
 
     - name: Install SwiftLint
