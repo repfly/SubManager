@@ -23,13 +23,9 @@ jobs:
       run: swift test -v
 
     - name: Install SwiftLint
-      run: |
-          git clone https://github.com/realm/SwiftLint.git
-          cd SwiftLint
-          swift build --configuration release -Xswiftc -static-stdlib
+      run: brew install swiftlint
     - name: Project Directory
       run: echo ${GITHUB_WORKSPACE}
 
     - name: Run SwiftLint in strict mode
-      run: |
-          ./SwiftLint/.build/release/swiftlint lint --strict --path ${GITHUB_WORKSPACE}
+      run: swiftlint lint --strict --path ${GITHUB_WORKSPACE}
